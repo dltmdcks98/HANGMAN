@@ -67,10 +67,7 @@ body {
     background: #fff;
     color: #c1d72e;
     cursor: pointer;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
     border-radius: 5px;
-    -khtml-border-radius: 5px;
     border: solid 1px #fff;
   }
   #alphabet li:hover {
@@ -121,10 +118,7 @@ body {
   }
   
   button {
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
     border-radius: 5px;
-    -khtml-border-radius: 5px;
     background: #c1d72e;
     color: #fff;
     border: solid 1px #fff;
@@ -137,8 +131,6 @@ body {
     outline: none;
   }
   button:hover {
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
     background: #fff;
     border: solid 1px #fff;
