@@ -198,7 +198,8 @@ window.onload = function () {
         counter += 1;
       }
     }
-    if(word.indexOf(guess)){
+    let j = word.indexOf(guess);
+    if(j===-1){
       lives -= 1;
       comments();
       animate();
