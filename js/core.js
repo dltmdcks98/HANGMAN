@@ -116,69 +116,80 @@ window.onload = function () {
     }
   
     
-     // Hangman
-    canvas =  function(){
+     // Hangman begin
   
-      myStickman = document.getElementById("stickman");
-      context = myStickman.getContext('2d');
-      context.beginPath();
-      context.strokeStyle = "#fff";
-      context.lineWidth = 2;
-    };
+
+
+  const myStickman = document.getElementById('stickman');
+  const canvas = () => {
+    context = myStickman.getContext('2d');
+    context.beginPath();
+    context.strokeStyle = "#fff";
+    context.lineWidth = 2;
+    context.shadowOffsetX=2;
+    context.shadowOffsetY=5;
+    context.shadowBlur=5;
+    context.shadowColor = "rgba(0,0,0,0.5)";
+
+  };
+
+  const head = () => {
+    context = myStickman.getContext('2d');
+    context.beginPath();
+    context.arc(70, 30, 10, 0, Math.PI * 2, true);
+    // context.arc(70, 30, 5, 0, Math.PI * 2, true);
+    // context.fill('evendodd');
+    context.stroke();
+  };
+
+  const drawLine = (fromX, fromY, toX, toY) => {
+    context.moveTo(fromX, fromY);
+    context.lineTo(toX, toY);
+    context.stroke();
+  };
+
+  const execution_table1 = () => {
+    //bottom line
+    drawLine(10, 130, 130, 130);
     
-      head = function(){
-        myStickman = document.getElementById("stickman");
-        context = myStickman.getContext('2d');
-        context.beginPath();
-        context.arc(60, 25, 10, 0, Math.PI*2, true);
-        context.stroke();
-      }
-      
-    draw = function($pathFromx, $pathFromy, $pathTox, $pathToy) {
-      
-      context.moveTo($pathFromx, $pathFromy);
-      context.lineTo($pathTox, $pathToy);
-      context.stroke(); 
-  }
+    
+  };
+  const execution_table2 = () => {
+    //left line
+    drawLine(10, 10, 10, 131);
+  };
+  const execution_table3 = () => {
+    //top line
+    drawLine(10, 10, 70, 10);
+  };
+  const execution_table4 = () => {
+    //small top line
+    drawLine(70, 10, 70, 20);
+  };
+  const body = () => {
+    drawLine(70, 40, 70, 80);
+  };
+  const leftArm = () => {
+    drawLine(70, 50, 50, 70);
+  };
+  const rightArm = () => {
+    drawLine(70, 50, 90, 70);
+  };
+  const leftLeg = () => {
+    drawLine(70, 80, 50, 110);
+  };
+  const rightLeg = () => {
+    drawLine(70, 80, 90, 110);
+  };
+
+
+
+  // FILO
+  drawArray = [rightLeg,leftLeg, rightArm, leftArm,body,head,execution_table4, execution_table3, execution_table2, execution_table1];
   
-     frame1 = function() {
-       draw (0, 150, 150, 150);
-     };
-     
-     frame2 = function() {
-       draw (10, 0, 10, 600);
-     };
-    
-     frame3 = function() {
-       draw (0, 5, 70, 5);
-     };
-    
-     frame4 = function() {
-       draw (60, 5, 60, 15);
-     };
-    
-     torso = function() {
-       draw (60, 36, 60, 70);
-     };
-    
-     rightArm = function() {
-       draw (60, 46, 100, 50);
-     };
-    
-     leftArm = function() {
-       draw (60, 46, 20, 50);
-     };
-    
-     rightLeg = function() {
-       draw (60, 70, 100, 100);
-     };
-    
-     leftLeg = function() {
-       draw (60, 70, 20, 100);
-     };
-    
-    drawArray = [rightLeg, leftLeg, rightArm, leftArm,  torso,  head, frame4, frame3, frame2, frame1]; 
+
   
+  // Hangman End
 
     // OnClick Function
      check = function () {
