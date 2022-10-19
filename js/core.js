@@ -231,9 +231,9 @@ window.onload = function () {
     // Play
     play = function () {
       categories = [
-          ["kakao", "covid-19", "samsung", "chocolate", "google", "manchester-city", "mcdonald"],
-          ["disney", "harry-potter", "hangman", "newyork", "dokdo"],
-          ["poutine", "milan", "madrid", "amsterdam", "sl-academy"]
+          ["kakao", "covid", "samsung", "chocolate", "google", "manchestercity", "mcdonald"],
+          ["disney", "harrypotter", "hangman", "newyork", "dokdo"],
+          ["poutine", "milan", "madrid", "amsterdam", "slacademy"]
       ];
       // 0부터 카테고리 개수까지 숫자 랜덤 추출
       chosenCategory = categories[Math.floor(Math.random() * categories.length)];    // 카테고리 내 단어 랜덤으로 뽑아오기.
