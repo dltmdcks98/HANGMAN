@@ -269,7 +269,7 @@ window.onload = function () {
       showClue.innerHTML = "Clue: - " +  hints [catagoryIndex][hintIndex];
     };
   
-     // Reset
+     // Resetㄴㄴ
   
     document.getElementById('reset').onclick = function() {
       bingo.parentNode.removeChild(bingo);
