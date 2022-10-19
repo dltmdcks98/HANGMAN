@@ -32,9 +32,19 @@ window.onload = function () {
       list = document.createElement('li');
       list.id = 'letter';
       list.innerHTML = alphabet[i];
+      list.dataset.alphabet = alphabet[i];
       check();
       myButtons.appendChild(letters);
       letters.appendChild(list);
+    }
+    document.onkeyup = e=>{
+      let $letters= document.querySelector('#buttons #alphabet').children; 
+      for(let i of $letters){
+        if(i.dataset.alphabet==e.key){
+          i.classList.add('active');
+          i.onclick=null;
+        }
+      }
     }
   }
     
@@ -177,13 +187,6 @@ window.onload = function () {
         comments();
       }
     }
-    document.onkeyup = e=>{
-      console.log(e);
-      let guess = e.key;
-      console.log(guess);
-
-    }
-
   }
   
   // Play
