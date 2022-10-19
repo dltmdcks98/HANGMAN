@@ -9,13 +9,13 @@ window.onload = function () {
     var getHint ;          // Word getHint
     var word ;              // Selected word
     var guess ;             // Geuss
-    var guesses = [ ];      // Stored geusses
+    var guesses = [ ];      // Stored guesses
     var lives ;             // Lives
-    var counter ;           // Count correct geusses
+    var counter ;           // Count correct guesses
     var space;              // Number of spaces in word '-'
   
     // Get elements
-    var showLives = document.getElementById("mylives");   // 남은 수명
+    var showLives = document.getElementById("mylives");
     var showCatagory = document.getElementById("scatagory");
     var getHint = document.getElementById("hint");
     var showClue = document.getElementById("clue");
@@ -32,18 +32,9 @@ window.onload = function () {
         list = document.createElement('li');
         list.id = 'letter';
         list.innerHTML = alphabet[i];
-        list.dataset.alphabet = alphabet[i];
         check();
         myButtons.appendChild(letters);
         letters.appendChild(list);
-      }
-      document.onkeyup = e=>{
-        let $letters= document.querySelector('#buttons #alphabet').children; 
-        for(let l of $letters){
-          if(l.dataset.alphabet==e.key){
-            keyup(l);
-          }
-        }
       }
     }
       
@@ -58,6 +49,7 @@ window.onload = function () {
         catagoryName.innerHTML = "The Chosen Category Is Cities";
       }
     }
+  
     //=====================형준
     // Create guesses ul
     result = function() {
@@ -86,15 +78,10 @@ window.onload = function () {
         bingo.appendChild(guess);
 
       }
-
-
-
-
-
-    }
-    //================================== 형준
+    
+ //================================== 형준
     // Show lives
-     comments = function () {
+    comments = function () {
       // 남은기회 출력
       showLives.innerHTML = "lives : " + lives;
       // 기회 0번이면 OUT
@@ -105,9 +92,7 @@ window.onload = function () {
         // 띄어쓰기랑 맞은 알파벳의 갯수가 같을 때
         if(counter + space === guesses.length) {
           showLives.innerHTML = "You Win";
-        }
-      }
-    }
+
   
         // Animate man
     var animate = function () {
@@ -179,7 +164,7 @@ window.onload = function () {
     
     drawArray = [rightLeg, leftLeg, rightArm, leftArm,  torso,  head, frame4, frame3, frame2, frame1]; 
   
-
+  
     // OnClick Function
      check = function () {
       list.onclick = function () {
@@ -192,48 +177,30 @@ window.onload = function () {
             counter += 1;
           } 
         }
-
-        //======================================형준
+         //======================================형준
         // indexof : 문자열의 인덱스 값 반환
         // 단, 찾는 문자열이 없을 경우 -1 반환
         // 입력단어 매치 실패 시 live -1
-      var match = word.indexOf(guess);
-      if(match == -1) {
-        lives -= 1;
-        comments();
-        animate();
-      } else {
-        comments();
-      }   
-    }
-  }
-    
-  function keyup(l) {
-    l.classList.add('active');
-    l.onclick=null;
-    let guess = l.dataset.alphabet;
-    for(let i =0; i<word.length; i++){
-      if(word[i]===guess){
-        guesses[i].innerHTML = guess;
-        counter += 1;
+        var match = word.indexOf(guess);
+        if(match == -1) {
+          lives -= 1;
+          comments();
+          animate();
+        } else {
+          comments();
+        }   
       }
     }
-    let j = word.indexOf(guess);
-    if(j===-1){
-      lives -= 1;
-      comments();
-      animate();
-    }else{
-      comments();
-    }
-  }
-      //======================================형준
+  
+    
+      
+    //======================================형준
     // Play
     play = function () {
       categories = [
-          ["kakao", "covid", "samsung", "chocolate", "google", "manchestercity", "mcdonald"],
-          ["disney", "harrypotter", "hangman", "newyork", "dokdo"],
-          ["poutine", "milan", "madrid", "amsterdam", "slacademy"]
+          ["kakao", "covid-19", "samsung", "chocolate", "google", "manchester-city", "mcdonald"],
+          ["disney", "harry-potter", "hangman", "newyork", "dokdo"],
+          ["poutine", "milan", "madrid", "amsterdam", "sl-academy"]
       ];
       // 0부터 카테고리 개수까지 숫자 랜덤 추출
       chosenCategory = categories[Math.floor(Math.random() * categories.length)];    // 카테고리 내 단어 랜덤으로 뽑아오기.
@@ -268,10 +235,11 @@ window.onload = function () {
       var hintIndex = chosenCategory.indexOf(word);
       showClue.innerHTML = "Clue: - " +  hints [catagoryIndex][hintIndex];
     };
-  
+
      // Reset
   
     document.getElementById('reset').onclick = function() {
+      correct.parentNode.removeChild(correct);
       letters.parentNode.removeChild(letters);
       showClue.innerHTML = "";
       context.clearRect(0, 0, 400, 400);

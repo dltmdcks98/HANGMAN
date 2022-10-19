@@ -8,14 +8,14 @@ window.onload = function () {
     var chosenCategory;     // Selected catagory
     var getHint ;          // Word getHint
     var word ;              // Selected word
-    var guess ;             // Geuss
-    var guesses = [ ];      // Stored geusses
+    var guess ;             // guess
+    var guesses = [ ];      // Stored guesses
     var lives ;             // Lives
-    var counter ;           // Count correct geusses
+    var counter ;           // Count correct guesses
     var space;              // Number of spaces in word '-'
   
     // Get elements
-    var showLives = document.getElementById("mylives");   // 남은 수명
+    var showLives = document.getElementById("mylives");
     var showCatagory = document.getElementById("scatagory");
     var getHint = document.getElementById("hint");
     var showClue = document.getElementById("clue");
@@ -58,53 +58,38 @@ window.onload = function () {
         catagoryName.innerHTML = "The Chosen Category Is Cities";
       }
     }
-    //=====================형준
+  
     // Create guesses ul
-    result = function() {
-      text = document.getElementById('hold');   // 입력한 알파벳 들어갈 곳
-      bingo = document.createElement('ul');    // 정답이면 ul만들어서 li로 _ _ _ 이런식으로 만들 예정
-
-      for(var i = 0; i < word.length; i++) {
-        // ul의 아이디 값 생성
-        bingo.setAttribute("id", "my-word");
-        // li 생성
-        guess = document.createElement("li");
-        guess.setAttribute("class", "guess");
-
-        // "-" 이면 - 만들고 아니면 _ 민들어서 입력한 알파벳 입력
-        if(text[i] === "-") {
+     result = function () {
+      wordHolder = document.getElementById('hold');
+      correct = document.createElement('ul');
+  
+      for (var i = 0; i < word.length; i++) {
+        correct.setAttribute('id', 'my-word');
+        guess = document.createElement('li');
+        guess.setAttribute('class', 'guess');
+        if (word[i] === "-") {
           guess.innerHTML = "-";
-          space = 1;    // - 띄어쓰기 공간으로 추정..
+          space = 1;
         } else {
           guess.innerHTML = "_";
         }
-        // 저장된 텍스트를 배열에 저장
+  
         guesses.push(guess);
-        // div에 ul 추가
-        text.appendChild(bingo);
-        // ul에 li 추가
-        bingo.appendChild(guess);
-
+        wordHolder.appendChild(correct);
+        correct.appendChild(guess);
       }
-
-
-
-
-
     }
-    //================================== 형준
+    
     // Show lives
      comments = function () {
-      // 남은기회 출력
-      showLives.innerHTML = "lives : " + lives;
-      // 기회 0번이면 OUT
-      if(lives < 1) {
-        showLives.innerHTML = "You OUT";
+      showLives.innerHTML = "You have " + lives + " lives";
+      if (lives < 1) {
+        showLives.innerHTML = "Game Over";
       }
-      for(var i = 0; i < guesses.length; i++) {
-        // 띄어쓰기랑 맞은 알파벳의 갯수가 같을 때
-        if(counter + space === guesses.length) {
-          showLives.innerHTML = "You Win";
+      for (var i = 0; i < guesses.length; i++) {
+        if (counter + space === guesses.length) {
+          showLives.innerHTML = "You Win!";
         }
       }
     }
@@ -179,7 +164,7 @@ window.onload = function () {
     
     drawArray = [rightLeg, leftLeg, rightArm, leftArm,  torso,  head, frame4, frame3, frame2, frame1]; 
   
-
+  
     // OnClick Function
      check = function () {
       list.onclick = function () {
@@ -192,60 +177,54 @@ window.onload = function () {
             counter += 1;
           } 
         }
-
-        //======================================형준
-        // indexof : 문자열의 인덱스 값 반환
-        // 단, 찾는 문자열이 없을 경우 -1 반환
-        // 입력단어 매치 실패 시 live -1
-      var match = word.indexOf(guess);
-      if(match == -1) {
+        var j = (word.indexOf(guess));
+        if (j === -1) {
+          lives -= 1;
+          comments();
+          animate();
+        } else {
+          comments();
+        }
+      }
+    }
+  
+    function keyup(l) {
+      l.classList.add('active');
+      l.onclick=null;
+      let guess = l.dataset.alphabet;
+      for(let i =0; i<word.length; i++){
+        if(word[i]===guess){
+          guesses[i].innerHTML = guess;
+          counter += 1;
+        }
+      }
+      let j = word.indexOf(guess);
+      if(j===-1){
         lives -= 1;
         comments();
         animate();
-      } else {
+      }else{
         comments();
-      }   
-    }
-  }
-    
-  function keyup(l) {
-    l.classList.add('active');
-    l.onclick=null;
-    let guess = l.dataset.alphabet;
-    for(let i =0; i<word.length; i++){
-      if(word[i]===guess){
-        guesses[i].innerHTML = guess;
-        counter += 1;
       }
     }
-    let j = word.indexOf(guess);
-    if(j===-1){
-      lives -= 1;
-      comments();
-      animate();
-    }else{
-      comments();
-    }
-  }
-      //======================================형준
     // Play
     play = function () {
       categories = [
-          ["kakao", "covid", "samsung", "chocolate", "google", "manchestercity", "mcdonald"],
-          ["disney", "harrypotter", "hangman", "newyork", "dokdo"],
-          ["poutine", "milan", "madrid", "amsterdam", "slacademy"]
+          ["everton", "liverpool", "swansea", "chelsea", "hull", "manchester-city", "newcastle-united"],
+          ["alien", "dirty-harry", "gladiator", "finding-nemo", "jaws"],
+          ["manchester", "milan", "madrid", "amsterdam", "prague"]
       ];
-      // 0부터 카테고리 개수까지 숫자 랜덤 추출
-      chosenCategory = categories[Math.floor(Math.random() * categories.length)];    // 카테고리 내 단어 랜덤으로 뽑아오기.
-      word = chosenCategory[Math.floor(Math.random() * chosenCategory.length)];    // 뽑은 단어에서 알파벳 하나하나 가져오기
-      word = word.replace(/\s/g, "-");  // 문자 내의 모든 공백 제거
+  
+      chosenCategory = categories[Math.floor(Math.random() * categories.length)];
+      word = chosenCategory[Math.floor(Math.random() * chosenCategory.length)];
+      word = word.replace(/\s/g, "-");
       console.log(word);
       buttons();
   
       guesses = [ ];
       lives = 10;
-      counter = 0;    // 맞은 알파벳 개수
-      space = 0;      // 띄어쓰기 개수
+      counter = 0;
+      space = 0;
       result();
       comments();
       selectCat();
@@ -259,9 +238,9 @@ window.onload = function () {
       hint.onclick = function() {
   
         hints = [
-          ["구 다음", "2020년에 발생한 최악의 바이러스", "대한민국 시총 1위", "노홍철이 좋아하는 단 거", "chrome", "Holland", "Best Burger"],
-          ["마블, 알라딘 등등", "Muggle", "best game", "Happy New Year", "Beautiful Island of Korea"],
-          ["fucking", "Home of AC and Inter", "Spanish capital", "Netherlands capital", "Best Academy"]
+          ["Based in Mersyside", "Based in Mersyside", "First Welsh team to reach the Premier Leauge", "Owned by A russian Billionaire", "Once managed by Phil Brown", "2013 FA Cup runners up", "Gazza's first club"],
+          ["Science-Fiction horror film", "1971 American action film", "Historical drama", "Anamated Fish", "Giant great white shark"],
+          ["Northern city in the UK", "Home of AC and Inter", "Spanish capital", "Netherlands capital", "Czech Republic capital"]
       ];
   
       var catagoryIndex = categories.indexOf(chosenCategory);
@@ -272,12 +251,13 @@ window.onload = function () {
      // Reset
   
     document.getElementById('reset').onclick = function() {
+      correct.parentNode.removeChild(correct);
       letters.parentNode.removeChild(letters);
       showClue.innerHTML = "";
       context.clearRect(0, 0, 400, 400);
       play();
     }
-  }
   
   
   
+  } 
