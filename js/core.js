@@ -272,6 +272,7 @@ window.onload = function () {
      // Reset
   
     document.getElementById('reset').onclick = function() {
+      bingo.parentNode.removeChild(bingo);
       letters.parentNode.removeChild(letters);
       showClue.innerHTML = "";
       context.clearRect(0, 0, 400, 400);
