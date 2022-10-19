@@ -1,7 +1,7 @@
 /* Variabes */
 /* Mixin's */
 body {
-    background: #c1d72e;
+    background: #FF7F50;
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #fff;
     height: 100%;
@@ -65,7 +65,7 @@ body {
     height: 30px;
     padding-top: 10px;
     background: #fff;
-    color: #c1d72e;
+    color: black;
     cursor: pointer;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -74,7 +74,7 @@ body {
     border: solid 1px #fff;
   }
   #alphabet li:hover {
-    background: #c1d72e;
+    background: #FF4500;
     border: solid 1px #fff;
     color: #fff;
   }
@@ -125,7 +125,7 @@ body {
     -webkit-border-radius: 5px;
     border-radius: 5px;
     -khtml-border-radius: 5px;
-    background: #c1d72e;
+    background: #FF4500;
     color: #fff;
     border: solid 1px #fff;
     text-decoration: none;
@@ -142,6 +142,6 @@ body {
     transition: all 0.3s ease-in-out;
     background: #fff;
     border: solid 1px #fff;
-    color: #c1d72e;
+    color: black;
   }
   
