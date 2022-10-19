@@ -280,9 +280,10 @@ window.onload = function () {
       showClue.innerHTML = "Clue: - " +  hints [catagoryIndex][hintIndex];
     };
   
-     // Reset
+     // Resetㄴㄴ
   
     document.getElementById('reset').onclick = function() {
+      bingo.parentNode.removeChild(bingo);
       letters.parentNode.removeChild(letters);
       showClue.innerHTML = "";
       context.clearRect(0, 0, 400, 400);
