@@ -39,10 +39,9 @@ window.onload = function () {
     }
     document.onkeyup = e=>{
       let $letters= document.querySelector('#buttons #alphabet').children; 
-      for(let i of $letters){
-        if(i.dataset.alphabet==e.key){
-          i.classList.add('active');
-          i.onclick=null;
+      for(let l of $letters){
+        if(l.dataset.alphabet==e.key){
+          keyup(l);
         }
       }
     }
@@ -188,7 +187,25 @@ window.onload = function () {
       }
     }
   }
-  
+
+  function keyup(l) {
+    l.classList.add('active');
+    l.onclick=null;
+    let guess = l.dataset.alphabet;
+    for(let i =0; i<word.length; i++){
+      if(word[i]===guess){
+        guesses[i].innerHTML = guess;
+        counter += 1;
+      }
+    }
+    if(word.indexOf(guess)){
+      lives -= 1;
+      comments();
+      animate();
+    }else{
+      comments();
+    }
+  }
   // Play
   play = function () {
     categories = [
@@ -241,6 +258,5 @@ window.onload = function () {
   }
 
 
+
 }
-
-
