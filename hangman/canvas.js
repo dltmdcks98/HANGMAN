@@ -94,19 +94,27 @@ window.onload = function () {
 
   // Hangman begin
   
+
+
+  const myStickman = document.getElementById('stickman');
   const canvas = () => {
-    const myStickman = document.getElementById('stickman');
     context = myStickman.getContext('2d');
     context.beginPath();
     context.strokeStyle = "#fff";
     context.lineWidth = 2;
+    context.shadowOffsetX=2;
+    context.shadowOffsetY=5;
+    context.shadowBlur=5;
+    context.shadowColor = "rgba(0,0,0,0.5)";
+
   };
 
   const head = () => {
-    const myStickman = document.getElementById('stickman');
     context = myStickman.getContext('2d');
     context.beginPath();
     context.arc(70, 30, 10, 0, Math.PI * 2, true);
+    // context.arc(70, 30, 5, 0, Math.PI * 2, true);
+    // context.fill('evendodd');
     context.stroke();
   };
 
@@ -119,6 +127,7 @@ window.onload = function () {
   const execution_table1 = () => {
     //bottom line
     drawLine(10, 130, 130, 130);
+    
     
   };
   const execution_table2 = () => {
@@ -151,9 +160,10 @@ window.onload = function () {
 
 
 
-
+  // FILO
   drawArray = [rightLeg,leftLeg, rightArm, leftArm,body,head,execution_table4, execution_table3, execution_table2, execution_table1];
-  // return{execution_table1, execution_table2, execution_table3, execution_table4, head, body, leftArm, rightArm, leftLeg, rightLeg};
+  
+
   
   // Hangman End
 
