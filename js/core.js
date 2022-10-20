@@ -108,6 +108,10 @@ window.onload = function () {
         // 띄어쓰기랑 맞은 알파벳의 갯수가 같을 때
         if(counter + space === guesses.length) {
           showLives.innerHTML = "You Win";
+          if(confirm('다시 시작?')){
+            restart();
+          }
+          return;
         }
       }
     }
@@ -284,9 +288,12 @@ window.onload = function () {
       showClue.innerHTML = "Hint: - " +  hints [catagoryIndex][hintIndex];
     };
   
-     // Resetㄴㄴ
+     // Reset
   
     document.getElementById('reset').onclick = function() {
+      restart();
+    }
+    function restart () {
       bingo.parentNode.removeChild(bingo);
       letters.parentNode.removeChild(letters);
       showClue.innerHTML = "";
