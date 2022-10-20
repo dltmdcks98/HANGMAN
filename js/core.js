@@ -54,11 +54,11 @@ window.onload = function () {
     // Select Catagory
     var selectCat = function () {
       if (chosenCategory === categories[0]) {
-        catagoryName.innerHTML = "1";
+        catagoryName.innerHTML = "";
       } else if (chosenCategory === categories[1]) {
-        catagoryName.innerHTML = "2";
+        catagoryName.innerHTML = "";
       } else if (chosenCategory === categories[2]) {
-        catagoryName.innerHTML = "3";
+        catagoryName.innerHTML = "";
       }
     }
     //=====================형준
