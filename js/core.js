@@ -41,6 +41,9 @@ window.onload = function () {
         let $letters= document.querySelector('#buttons #alphabet').children; 
         for(let l of $letters){
           if(l.dataset.alphabet==e.key){
+            if(l.hasAttributes('class','active')){
+                l.onkeyup=null;
+            }
             keyup(l);
           }
         }
@@ -222,6 +225,7 @@ window.onload = function () {
   function keyup(l) {
     l.classList.add('active');
     l.onclick=null;
+    l.onkeyup=null;
     let guess = l.dataset.alphabet;
     for(let i =0; i<word.length; i++){
       if(word[i]===guess){
