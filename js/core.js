@@ -51,11 +51,11 @@ window.onload = function () {
     // Select Catagory
     var selectCat = function () {
       if (chosenCategory === categories[0]) {
-        catagoryName.innerHTML = "The Chosen Category Is Premier League Football Teams";
+        catagoryName.innerHTML = "1";
       } else if (chosenCategory === categories[1]) {
-        catagoryName.innerHTML = "The Chosen Category Is Films";
+        catagoryName.innerHTML = "2";
       } else if (chosenCategory === categories[2]) {
-        catagoryName.innerHTML = "The Chosen Category Is Cities";
+        catagoryName.innerHTML = "3";
       }
     }
     //=====================형준
