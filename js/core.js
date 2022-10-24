@@ -305,11 +305,27 @@ window.onload = function () {
       const $btnSidebar = document.querySelectorAll('.btn-sidebar');
       for(let i=0; i<$btnSidebar.length; i++){
         $btnSidebar[i].onclick= e =>{
-          console.log(lives-i);
+          switch (i) {
+            case 0:
+              lives=7;
+              comments();
+              break;
+
+            case 1:
+              lives=5;
+              comments();
+              break;
+
+            case 2:
+              lives=3;
+              comments();
+              break;
+
+            default:
+              break;
+          }
         }
       }
-      
- 
       
   }
   
