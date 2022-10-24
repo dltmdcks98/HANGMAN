@@ -116,8 +116,8 @@ window.onload = function () {
     }
   
         // Animate man
-    var animate = function () {
-      var drawMe = lives ;
+    var animate = function (live) {
+      var drawMe = live ;
       drawArray[drawMe]();
     }
   
@@ -218,7 +218,7 @@ window.onload = function () {
       if(match == -1) {
         lives -= 1;
         comments();
-        animate();
+        animate(lives);
       } else {
         comments();
       }   
@@ -240,7 +240,7 @@ window.onload = function () {
     if(j===-1){
       lives -= 1;
       comments();
-      animate();
+      animate(lives);
     }else{
       comments();
     }
@@ -301,27 +301,36 @@ window.onload = function () {
     }
 
 
+
+    function levelDraw(level) {
+      restart();
+      console.log(lives);
+      for(let i=lives; i>level; i--){
+        
+        animate(i);
+        
+      }
+      lives=level;
+      comments();
+    }
     
       const $btnSidebar = document.querySelectorAll('.btn-sidebar');
       for(let i=0; i<$btnSidebar.length; i++){
         $btnSidebar[i].onclick= e =>{
           switch (i) {
             case 0:
-              lives=7;
-              comments();
+              levelDraw(7);
               break;
 
             case 1:
-              lives=5;
-              comments();
+              levelDraw(5);
               break;
 
             case 2:
-              lives=3;
-              comments();
+              levelDraw(3);
               break;
 
-            default:
+              default:
               break;
           }
         }
