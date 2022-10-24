@@ -37,6 +37,7 @@ window.onload = function () {
         myButtons.appendChild(letters);
         letters.appendChild(list);
       }
+
       document.onkeyup = e=>{
         let $letters= document.querySelector('#buttons #alphabet').children; 
         for(let l of $letters){
@@ -89,8 +90,6 @@ window.onload = function () {
         bingo.appendChild(guess);
 
       }
-
-
 
 
 
@@ -300,6 +299,18 @@ window.onload = function () {
       context.clearRect(0, 0, 400, 400);
       play();
     }
+
+
+    
+      const $btnSidebar = document.querySelectorAll('.btn-sidebar');
+      for(let i=0; i<$btnSidebar.length; i++){
+        $btnSidebar[i].onclick= e =>{
+          console.log(lives-i);
+        }
+      }
+      
+ 
+      
   }
   
   

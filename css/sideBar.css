@@ -1,0 +1,13 @@
+  /* Side Bar  */
+  .sidebar{
+    
+    float: right;
+    width: 10%;
+    position: absolute;
+    right: 0px;
+    top: 5%;
+}
+.sidebar>button{
+    width: 85%;
+
+}
