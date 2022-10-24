@@ -124,8 +124,6 @@ window.onload = function () {
     
      // Hangman begin
   
-
-
   const myStickman = document.getElementById('stickman');
   const canvas = () => {
     context = myStickman.getContext('2d');
@@ -157,7 +155,6 @@ window.onload = function () {
   const execution_table1 = () => {
     //bottom line
     drawLine(10, 130, 130, 130);
-    
     
   };
   const execution_table2 = () => {
@@ -305,10 +302,8 @@ window.onload = function () {
     function levelDraw(level) {
       restart();
       console.log(lives);
-      for(let i=lives; i>level; i--){
-        
-        animate(i);
-        
+      for(var i=lives-1; i>level; --i){
+        drawArray[i]();
       }
       lives=level;
       comments();
@@ -316,7 +311,7 @@ window.onload = function () {
     
       const $btnSidebar = document.querySelectorAll('.btn-sidebar');
       for(let i=0; i<$btnSidebar.length; i++){
-        $btnSidebar[i].onclick= e =>{
+        $btnSidebar[i].onclick= () =>{
           switch (i) {
             case 0:
               levelDraw(7);
