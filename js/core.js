@@ -302,7 +302,7 @@ window.onload = function () {
     function levelDraw(level) {
       restart();
       console.log(lives);
-      for(var i=lives-1; i>level; --i){
+      for(var i=lives-1; i>=level; --i){
         drawArray[i]();
       }
       lives=level;
