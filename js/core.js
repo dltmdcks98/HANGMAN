@@ -62,7 +62,7 @@ window.onload = function () {
         catagoryName.innerHTML = "";
       }
     }
-    //=====================형준
+ 
     // Create guesses ul
     result = function() {
       text = document.getElementById('hold');   // 입력한 알파벳 들어갈 곳
@@ -94,7 +94,7 @@ window.onload = function () {
 
 
     }
-    //================================== 형준
+
     // Show lives
      comments = function () {
       // 남은기회 출력
@@ -141,8 +141,6 @@ window.onload = function () {
     context = myStickman.getContext('2d');
     context.beginPath();
     context.arc(70, 30, 10, 0, Math.PI * 2, true);
-    // context.arc(70, 30, 5, 0, Math.PI * 2, true);
-    // context.fill('evendodd');
     context.stroke();
   };
 
@@ -207,7 +205,7 @@ window.onload = function () {
           } 
         }
 
-        //======================================형준
+
         // indexof : 문자열의 인덱스 값 반환
         // 단, 찾는 문자열이 없을 경우 -1 반환
         // 입력단어 매치 실패 시 live -1
@@ -242,7 +240,7 @@ window.onload = function () {
       comments();
     }
   }
-      //======================================형준
+ 
     // Play
     play = function () {
       categories = [
